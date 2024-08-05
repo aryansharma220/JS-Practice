@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <input id="searchInput" type="text" placeholder="Search your city.." value="">
+    <div class="data-container">
+      <p class="location">-</p>
+      <p class="weatherType">-</p>
+      <p class="temp">-</p>
+      <p class="minMaxTemp">Min: - Max: -</p>
+      <div class="bottom">
+        <div class="card">
+          <p>Feels Like</p>
+          <p class="feelsLike">-</p>
+        </div>
+        <div class="card">
+          <p>Humidity</p>
+          <p class="humidity">-</p>
+        </div>
+        <div class="card">
+          <p>Wind</p>
+          <p class="wind">-</p>
+        </div>
+        <div class="card">
+          <p>Pressure</p>
+          <p class="pressure">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const getData = async(city)=>{
+    const API_KEY="588183313f88ab79f1bd89516cd328cf"
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+    try{
+      const response = await fetch(weatherApiUrl)
+      const data = await response.json()
+      // console.log(data);
+      document.getElementsByClassName('location')[0].innerHTML=`${data.name}, ${data.sys.country}`
+      document.getElementsByClassName('weatherType')[0].innerHTML=data.weather[0].main
+      document.getElementsByClassName('temp')[0].innerHTML=`${data.main.temp}°`
+      document.getElementsByClassName('minMaxTemp')[0].innerHTML=`Min: ${data.main.temp_min}° Max: ${data.main.temp_max}°`
+      document.getElementsByClassName('feelsLike')[0].innerHTML=`${data.main.feels_like}°`
+      document.getElementsByClassName('humidity')[0].innerHTML=`${data.main.humidity}%`
+      document.getElementsByClassName('wind')[0].innerHTML=`${data.wind.speed} m/s`
+      document.getElementsByClassName('pressure')[0].innerHTML=`${data.main.pressure} hPa`
+      
+    }catch(e){
+      alert(e)
+    }
+      
+    }
+    const inputCity = document.getElementById('searchInput')
+    inputCity.addEventListener("keypress",(e)=>{
+      if(e.key=="Enter"){
+        getData(inputCity.value);
+      }
+    })
+
+
+    
+  </script>
+</body>
+
+</html>

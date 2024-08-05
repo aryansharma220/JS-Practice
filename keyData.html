@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Data</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      background-color: rgb(22, 22, 22);
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .container{
+      /* border: 2px solid white; */
+      /* width: 300px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      input{
+        width: 300px;
+        height: 35px;
+        border-radius: .41rem;
+        padding: .4rem;
+      }
+    }
+
+    .details{
+      font-size: 14px;
+      color: rgb(147, 147, 86);
+      margin: 1rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      /* padding: 1rem; */
+      background-color: rgb(31, 31, 31);
+      border-left: .2rem solid white;
+      border-top-left-radius: .31rem;
+      border-bottom-left-radius: .31rem;
+
+      div{
+        width: 300px;
+        text-align: left;
+        padding: .7rem 1rem ;
+
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input id="keyInput" type="text">
+    <div class="details">
+      <div class="pressed">Key Pressed : </div>
+      <div class="code">Key Code : </div>
+      <div class="charCode">Char Code : </div>
+      <div class="type">Key Type : </div>
+    </div>
+  </div>
+  
+
+  <script>
+
+    const handleKeyDown =(event)=>{
+      console.log(event)
+      console.log(event.key)
+      console.log(event.code)
+      console.log(event.keyCode)
+      console.log(event.type)
+      document.getElementsByClassName('pressed')[0].innerHTML=`Key Pressed : ${event.key}`
+      document.getElementsByClassName('code')[0].innerHTML=`Key Code : ${event.code}`
+      document.getElementsByClassName('charCode')[0].innerHTML=`Char Code : ${event.keyCode}`
+      document.getElementsByClassName('type')[0].innerHTML=`Key Type : ${event.type}`
+
+      setTimeout(() => {
+        document.getElementById('keyInput').value=""
+      }, 2000);
+    }
+    document.getElementById('keyInput').addEventListener('keydown',handleKeyDown)
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+  <div class="container">
+    <p id="clock"></p>
+  </div>
+  <div class="stand"></div>
+  <div class="shadow"></div>
+  
+  <script>
+    function liveClock(){
+      const currTime = new Date();
+      const curDate = currTime.toLocaleTimeString().toUpperCase()
+      // console.log(curDate)
+      document.getElementById("clock").innerHTML=curDate;
+    }
+    setInterval(liveClock,1000)
+  </script>
+</body>
+</html>

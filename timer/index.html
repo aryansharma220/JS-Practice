@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="display">0</div>
+    <div class="btn-container">
+      <button class="startbtn btn">Start</button>
+      <button class="stopbtn btn">Stop</button>
+      <button class="resetbtn btn">Reset</button>
+      <button class="getTimebtn btn">Get Time</button>
+      <button class="clearTimebtn btn">Clear Time</button>
+    </div>
+    <div class="displayTimeStop">
+
+    </div>
+  </div>
+
+  <script>
+    let timerStart = document.getElementsByClassName("display")[0].innerHTML
+    let timerId;
+
+    const startTimer =()=>{
+        timerId = setInterval(()=>{
+        timerStart=parseInt(timerStart)+1
+        document.getElementsByClassName("display")[0].innerHTML=timerStart
+      },1000)
+    }
+
+    const stopTimer =()=>{
+      setTimeout(()=>clearInterval(timerId),0)
+    }
+
+    const resetTimer =()=>{
+      timerStart=0;
+      document.getElementsByClassName("display")[0].innerHTML=timerStart
+      stopTimer()
+    }
+
+    const getTime = ()=>{
+      const newTime = document.createElement('p');
+      newTime.classList.add('getTime')
+      newTime.innerHTML=`The stop time is ${timerStart-1 }`
+      document.getElementsByClassName('displayTimeStop')[0].append(newTime)
+
+    }
+
+    const clearTime = ()=>{
+      document.getElementsByClassName("displayTimeStop")[0].innerHTML=""
+    }
+    document.getElementsByClassName("startbtn")[0].addEventListener("click",startTimer)
+    document.getElementsByClassName("stopbtn")[0].addEventListener("click",stopTimer)
+    document.getElementsByClassName("resetbtn")[0].addEventListener("click",resetTimer)
+    document.getElementsByClassName("getTimebtn")[0].addEventListener("click",getTime)
+    document.getElementsByClassName("clearTimebtn")[0].addEventListener("click",clearTime)
+  </script>
+</body>
+</html>
